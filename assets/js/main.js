@@ -16,6 +16,29 @@ let header = document.querySelector(".header");
 open_btn.addEventListener("click", function () {
   header.classList.toggle("active");
 });
+let num = document.querySelectorAll(".num");
+let stats = document.querySelector(".stats");
+let started = false;
+
+window.onscroll = function () {
+  if (window.scrollY >= stats.offsetTop) {
+    if (!started) {
+      num.forEach((num) => {
+        startCount(num);
+      });
+    }
+    started = true;
+  }
+};
+function startCount(el) {
+  let goal = el.dataset.goal;
+  let counter = setInterval(() => {
+    el.textContent++;
+    if (el.textContent == goal) {
+      clearInterval(counter);
+    }
+  }, 2000 / goal);
+}
 $("#gototop").on("click", function () {
   $("body,html").animate({ scrollTop: 0 }, 2000);
 });
