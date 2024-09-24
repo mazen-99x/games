@@ -224,6 +224,7 @@ nav {
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
+  position: relative;
 }
 
 .home .overlay {
